@@ -1,6 +1,5 @@
-import Testing
-
 import Netherlands_Standard
+import Testing
 
 extension Netherlands.RSIN {
     @Suite struct Test {
@@ -31,7 +30,7 @@ extension Netherlands.RSIN.Test.`Edge Case` {
         #expect(throws: Netherlands.RSIN.Error.invalidLength(0)) {
             try Netherlands.RSIN("")
         }
-        #expect(throws: Netherlands.RSIN.Error.invalidCharacter(" ")) {
+        #expect(throws: Netherlands.RSIN.Error.invalidCharacter) {
             try Netherlands.RSIN("111 222 333")
         }
     }

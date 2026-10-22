@@ -1,6 +1,5 @@
-import Testing
-
 import Netherlands_Standard
+import Testing
 
 extension Netherlands.BTW.Identification {
     @Suite struct Test {

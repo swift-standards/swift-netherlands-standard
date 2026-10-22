@@ -1,11 +1,6 @@
 extension Netherlands.Digits {
-
-    internal enum Error: Swift.Error, Sendable, Equatable {
-
-        /// The text has a different number of characters than required.
+    internal enum Error: Swift::Error, Sendable, Equatable {
         case invalidLength(Int)
-
-        /// The text contains a character other than `0`–`9`.
-        case invalidCharacter(Unicode.Scalar)
+        case invalidCharacter
     }
 }

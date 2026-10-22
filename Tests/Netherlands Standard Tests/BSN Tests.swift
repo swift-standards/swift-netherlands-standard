@@ -1,6 +1,5 @@
-import Testing
-
 import Netherlands_Standard
+import Testing
 
 extension Netherlands.BSN {
     @Suite struct Test {
@@ -38,17 +37,17 @@ extension Netherlands.BSN.Test.`Edge Case` {
 
     @Test
     func `separators and letters are refused`() {
-        #expect(throws: Netherlands.BSN.Error.invalidCharacter(".")) {
+        #expect(throws: Netherlands.BSN.Error.invalidCharacter) {
             try Netherlands.BSN("1112.22.333")
         }
-        #expect(throws: Netherlands.BSN.Error.invalidCharacter("O")) {
+        #expect(throws: Netherlands.BSN.Error.invalidCharacter) {
             try Netherlands.BSN("11122233O")
         }
     }
 
     @Test
     func `non-ASCII digits are refused`() {
-        #expect(throws: Netherlands.BSN.Error.invalidCharacter("١")) {
+        #expect(throws: Netherlands.BSN.Error.invalidCharacter) {
             try Netherlands.BSN("11122233١")
         }
     }

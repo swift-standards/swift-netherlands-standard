@@ -1,11 +1,6 @@
 extension Netherlands.KvK.Number {
-
-    public enum Error: Swift.Error, Sendable, Equatable {
-
-        /// The text is not eight characters long.
+    public enum Error: Swift::Error, Sendable, Equatable {
         case invalidLength(Int)
-
-        /// The text contains a character other than `0`–`9`.
-        case invalidCharacter(Unicode.Scalar)
+        case invalidCharacter
     }
 }

@@ -1,6 +1,5 @@
-import Testing
-
 import Netherlands_Standard
+import Testing
 
 extension Netherlands.KvK.Number {
     @Suite struct Test {
@@ -31,10 +30,10 @@ extension Netherlands.KvK.Number.Test.`Edge Case` {
 
     @Test
     func `letters and separators are refused`() {
-        #expect(throws: Netherlands.KvK.Number.Error.invalidCharacter("K")) {
+        #expect(throws: Netherlands.KvK.Number.Error.invalidCharacter) {
             try Netherlands.KvK.Number("KvK69599084")
         }
-        #expect(throws: Netherlands.KvK.Number.Error.invalidCharacter(" ")) {
+        #expect(throws: Netherlands.KvK.Number.Error.invalidCharacter) {
             try Netherlands.KvK.Number("6959 9084")
         }
     }
