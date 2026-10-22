@@ -1,3 +1,3 @@
 extension Netherlands {
-    public enum KvK {}
+    public enum KVK {}
 }

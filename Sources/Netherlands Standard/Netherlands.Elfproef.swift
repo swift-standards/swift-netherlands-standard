@@ -3,7 +3,7 @@ extension Netherlands {
 }
 
 extension Netherlands.Elfproef {
-    internal static func isSatisfied(by digits: some Collection<UInt8>) -> Bool {
+    internal static func isSatisfied(by digits: some Swift::Collection<UInt8>) -> Bool {
         let weights = [9, 8, 7, 6, 5, 4, 3, 2, -1]
         let sum = zip(digits, weights).map { digit, weight in
             Int(digit - UInt8(ascii: "0")) * weight

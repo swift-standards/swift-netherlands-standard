@@ -12,7 +12,7 @@ Each type has one initializer, and it validates:
 |---|---|---|
 | `Netherlands.BSN` | burgerservicenummer | nine digits, eleven test |
 | `Netherlands.RSIN` | RSIN | nine digits, eleven test |
-| `Netherlands.KvK.Number` | KvK-nummer | eight digits (no check digit) |
+| `Netherlands.KVK.Number` | KvK-nummer | eight digits (no check digit) |
 | `Netherlands.BTW.Identification` | btw-identificatienummer | `NL` + nine digits + `B` + two digits; eleven test or ISO 7064 MOD 97-10 |
 
 ```swift
