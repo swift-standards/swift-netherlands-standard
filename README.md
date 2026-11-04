@@ -1,35 +1,14 @@
 # swift-netherlands-standard
 
-![Development Status](https://img.shields.io/badge/status-active--development-blue.svg)
+Use this package when you take a Dutch identifier as text and need to know it is well-formed before you store or send it. Start from `Netherlands.BSN` for a citizen service number, `Netherlands.RSIN` for a legal entity's fiscal number, `Netherlands.KVK.Number` for a Chamber of Commerce number and `Netherlands.BTW.Identification` for a VAT number. A value that passes is well-formed. It is not necessarily issued.
 
-Swift implementation of identifiers the Dutch state issues.
+## Laws
 
-## Overview
-
-Each type has one initializer, and it validates:
-
-| Type | Identifier | Check |
-|---|---|---|
-| `Netherlands.BSN` | burgerservicenummer | nine digits, eleven test |
-| `Netherlands.RSIN` | RSIN | nine digits, eleven test |
-| `Netherlands.KVK.Number` | KvK-nummer | eight digits (no check digit) |
-| `Netherlands.BTW.Identification` | btw-identificatienummer | `NL` + nine digits + `B` + two digits; eleven test or ISO 7064 MOD 97-10 |
-
-```swift
-import Netherlands_Standard
-
-let bsn = try Netherlands.BSN("111222333")
-let btw = try Netherlands.BTW.Identification("NL000099998B57")
-```
-
-The eleven test weights the nine digits 9, 8, 7, 6, 5, 4, 3, 2 and −1 and requires a multiple of 11. Nine zeros satisfy that arithmetic but are the placeholder forms print, so they are refused, also in a btw-identificatienummer, where `NL000000000B73` would satisfy MOD 97-10.
-
-The Belastingdienst issues two kinds of btw-identificatienummer: numbers built on the holder's fiscal number (RSIN), whose nine digits pass the eleven test, and numbers issued to sole proprietors since 2020, whose whole text passes ISO 7064 MOD 97-10 with letters converted as in an IBAN. A number passing either is accepted.
-
-The KvK-nummer carries no check digit, so its validation is structural. It is distinct from the twelve-digit vestigingsnummer.
-
-A valid number is well-formed; it is not necessarily issued.
-
-## License
-
-Apache 2.0. See [LICENSE.md](LICENSE.md).
+- Text is never cleaned up. Spaces, dots, lowercase letters and missing leading zeros are all refused, and `value` holds the text exactly as given.
+- Only ASCII digits count as digits. Digits from other scripts, such as Arabic-Indic ones, are refused.
+- For `Netherlands.BSN`, `Netherlands.RSIN` and `Netherlands.KVK.Number`, characters are checked before length. Text with a separator fails as an invalid character even when its length is also wrong.
+- `Netherlands.BSN` and `Netherlands.RSIN` take exactly nine digits that pass the eleven test: the digits weighted 9, 8, 7, 6, 5, 4, 3, 2 and -1 must sum to a multiple of 11. Nine zeros meet that arithmetic but are the placeholder printed on forms, so they are refused as a checksum failure.
+- `Netherlands.KVK.Number` takes exactly eight digits. It has no check digit, so any eight digits pass. The twelve-digit vestigingsnummer is refused.
+- `Netherlands.BTW.Identification` takes exactly 14 characters: uppercase `NL`, nine digits, uppercase `B`, two digits. Length is checked before shape.
+- A `Netherlands.BTW.Identification` is accepted if its nine digits pass the eleven test, as numbers built on an RSIN do, or if the whole text passes ISO 7064 MOD 97-10 with letters converted as in an IBAN, as sole-proprietor numbers issued since 2020 do. Under the eleven test the last two digits are not checked.
+- Nine zero digits are refused in a `Netherlands.BTW.Identification` too, even where MOD 97-10 would hold, as in `NL000000000B73`.
