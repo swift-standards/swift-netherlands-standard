@@ -1,14 +1,16 @@
 import Netherlands_Standard
 import Testing
 
-extension Netherlands.BTW.Identification {
+enum `Netherlands.BTW.Identification Tests` {}
+
+extension `Netherlands.BTW.Identification Tests` {
     @Suite struct Test {
         @Suite struct Unit {}
         @Suite struct `Edge Case` {}
     }
 }
 
-extension Netherlands.BTW.Identification.Test.Unit {
+extension `Netherlands.BTW.Identification Tests`.Test.Unit {
 
     @Test
     func `the Belastingdienst's sole-proprietor example passes MOD 97-10`() throws {
@@ -28,7 +30,7 @@ extension Netherlands.BTW.Identification.Test.Unit {
     }
 }
 
-extension Netherlands.BTW.Identification.Test.`Edge Case` {
+extension `Netherlands.BTW.Identification Tests`.Test.`Edge Case` {
 
     @Test
     func `the fiscal number alone is refused`() {

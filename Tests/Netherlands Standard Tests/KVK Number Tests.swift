@@ -1,14 +1,16 @@
 import Netherlands_Standard
 import Testing
 
-extension Netherlands.KVK.Number {
+enum `Netherlands.KVK.Number Tests` {}
+
+extension `Netherlands.KVK.Number Tests` {
     @Suite struct Test {
         @Suite struct Unit {}
         @Suite struct `Edge Case` {}
     }
 }
 
-extension Netherlands.KVK.Number.Test.Unit {
+extension `Netherlands.KVK.Number Tests`.Test.Unit {
 
     @Test(arguments: ["69599084", "68750110", "01234567"])
     func `eight digits are accepted`(text: String) throws {
@@ -16,7 +18,7 @@ extension Netherlands.KVK.Number.Test.Unit {
     }
 }
 
-extension Netherlands.KVK.Number.Test.`Edge Case` {
+extension `Netherlands.KVK.Number Tests`.Test.`Edge Case` {
 
     @Test
     func `seven digits and the twelve-digit vestigingsnummer are refused`() {

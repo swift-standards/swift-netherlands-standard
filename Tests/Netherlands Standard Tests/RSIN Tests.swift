@@ -1,14 +1,16 @@
 import Netherlands_Standard
 import Testing
 
-extension Netherlands.RSIN {
+enum `Netherlands.RSIN Tests` {}
+
+extension `Netherlands.RSIN Tests` {
     @Suite struct Test {
         @Suite struct Unit {}
         @Suite struct `Edge Case` {}
     }
 }
 
-extension Netherlands.RSIN.Test.Unit {
+extension `Netherlands.RSIN Tests`.Test.Unit {
 
     @Test(arguments: ["111222333", "123456782"])
     func `numbers that pass the eleven test are accepted`(text: String) throws {
@@ -23,7 +25,7 @@ extension Netherlands.RSIN.Test.Unit {
     }
 }
 
-extension Netherlands.RSIN.Test.`Edge Case` {
+extension `Netherlands.RSIN Tests`.Test.`Edge Case` {
 
     @Test
     func `the wrong number of digits is refused`() {

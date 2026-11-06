@@ -1,14 +1,16 @@
 import Netherlands_Standard
 import Testing
 
-extension Netherlands.BSN {
+enum `Netherlands.BSN Tests` {}
+
+extension `Netherlands.BSN Tests` {
     @Suite struct Test {
         @Suite struct Unit {}
         @Suite struct `Edge Case` {}
     }
 }
 
-extension Netherlands.BSN.Test.Unit {
+extension `Netherlands.BSN Tests`.Test.Unit {
 
     @Test(arguments: ["111222333", "123456782", "999999990"])
     func `numbers that pass the eleven test are accepted`(text: String) throws {
@@ -23,7 +25,7 @@ extension Netherlands.BSN.Test.Unit {
     }
 }
 
-extension Netherlands.BSN.Test.`Edge Case` {
+extension `Netherlands.BSN Tests`.Test.`Edge Case` {
 
     @Test
     func `eight-digit numbers need their leading zero`() {
